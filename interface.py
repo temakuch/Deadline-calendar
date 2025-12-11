@@ -3,36 +3,40 @@ from tkinter import messagebox
 from tkinter import ttk
 import calendar
 from datetime import datetime
+<<<<<<< Updated upstream
+=======
+from db import DatabaseManager
+>>>>>>> Stashed changes
 
 class DeadlineCalendarApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Deadline Calendar MVP")
+        self.root.title("Deadline Calendar")
         self.root.geometry("900x600")
 
+<<<<<<< Updated upstream
+=======
+        self.db = DatabaseManager()
+>>>>>>> Stashed changes
 
-        # Поточна дата
         self.current_date = datetime.now()
         self.selected_date = self.current_date.strftime("%Y-%m-%d")
         self.year = self.current_date.year
         self.month = self.current_date.month
 
-        # Запуск побудови інтерфейсу
         self.setup_ui()
         self.draw_calendar_grid()
         self.update_event_list()
 
     def setup_ui(self):
         """Налаштування розмітки вікна"""
-        # Ліва панель
+
         self.left_frame = tk.Frame(self.root, width=500, bg="#f0f0f0", padx=10, pady=10)
         self.left_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
-        # Права панель
         self.right_frame = tk.Frame(self.root, width=350, bg="white", padx=10, pady=10)
         self.right_frame.pack(side=tk.RIGHT, fill=tk.BOTH)
 
-        # Навігація
         nav_frame = tk.Frame(self.left_frame, bg="#f0f0f0")
         nav_frame.pack(fill=tk.X, pady=5)
         
@@ -41,16 +45,13 @@ class DeadlineCalendarApp:
         self.month_label.pack(side=tk.LEFT, expand=True)
         tk.Button(nav_frame, text="Наст. >", command=self.next_month).pack(side=tk.RIGHT)
 
-        # Сітка календаря
         self.calendar_frame = tk.Frame(self.left_frame, bg="#f0f0f0")
         self.calendar_frame.pack(expand=True, fill=tk.BOTH)
 
-        # Права частина
         tk.Label(self.right_frame, text="Дедлайни на дату:", font=("Arial", 12), bg="white").pack(anchor="w")
         self.lbl_selected_date = tk.Label(self.right_frame, text=self.selected_date, font=("Arial", 16, "bold"), fg="#d32f2f", bg="white")
         self.lbl_selected_date.pack(anchor="w", pady=(0, 10))
 
-        # Список (Treeview)
         columns = ("time", "title")
         self.tree = ttk.Treeview(self.right_frame, columns=columns, show="headings", height=15)
         self.tree.heading("time", text="Час")
@@ -59,7 +60,6 @@ class DeadlineCalendarApp:
         self.tree.column("title", width=200)
         self.tree.pack(fill=tk.BOTH, expand=True)
 
-        # Кнопки
         btn_frame = tk.Frame(self.right_frame, bg="white")
         btn_frame.pack(fill=tk.X, pady=10)
         tk.Button(btn_frame, text="Додати дедлайн", bg="#4caf50", fg="white", command=self.open_add_window).pack(side=tk.LEFT, fill=tk.X, expand=True, padx=2)
