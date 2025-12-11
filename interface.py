@@ -3,6 +3,7 @@ from tkinter import messagebox
 from tkinter import ttk
 import calendar
 from datetime import datetime
+from db import DatabaseManager  # Імпорт нашого класу БД
 
 class DeadlineCalendarApp:
     def __init__(self, root):
@@ -10,6 +11,8 @@ class DeadlineCalendarApp:
         self.root.title("Deadline Calendar MVP")
         self.root.geometry("900x600")
 
+        # Ініціалізація БД через імпортований клас
+        self.db = DatabaseManager()
 
         # Поточна дата
         self.current_date = datetime.now()
