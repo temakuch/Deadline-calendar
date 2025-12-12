@@ -3,10 +3,7 @@ from tkinter import messagebox
 from tkinter import ttk
 import calendar
 from datetime import datetime
-<<<<<<< Updated upstream
-=======
 from db import DatabaseManager
->>>>>>> Stashed changes
 
 class DeadlineCalendarApp:
     def __init__(self, root):
@@ -14,10 +11,8 @@ class DeadlineCalendarApp:
         self.root.title("Deadline Calendar")
         self.root.geometry("900x600")
 
-<<<<<<< Updated upstream
-=======
+
         self.db = DatabaseManager()
->>>>>>> Stashed changes
 
         self.current_date = datetime.now()
         self.selected_date = self.current_date.strftime("%Y-%m-%d")
